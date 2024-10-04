@@ -57,3 +57,52 @@ Remember to update the PROGRAM_ID in your .env files if it changes after deploym
    - Configure project settings if necessary
    - Click "Deploy"
 6. After initial setup, pushing to GitHub will automatically trigger a new deployment on Vercel.
+
+## Handling Large Files and Git History
+
+If you encounter issues with large files in your Git history:
+
+1. Create a backup of your project.
+2. Run the following commands to remove large files from Git history:
+   ```bash
+   git filter-branch --force --index-filter \
+     "git rm -rf --cached --ignore-unmatch test-ledger" \
+     --prune-empty --tag-name-filter cat -- --all
+
+   git for-each-ref --format='delete %(refname)' refs/original | git update-ref --stdin
+
+   git reflog expire --expire=now --all
+
+   git gc --prune=now
+   ```
+3. Update .gitignore to exclude large files and directories.
+4. Commit the new .gitignore file.
+5. Force push to GitHub: `git push origin main --force`
+6. If issues persist, create a new repository and push to it.
+
+Remember to always check for large files before committing and pushing to avoid these issues in the future.
+
+## Managing Test Ledger
+
+The test ledger is necessary for local development but should not be pushed to GitHub due to its large size.
+
+1. The `test-ledger` folder is included in `.gitignore` to prevent it from being tracked.
+2. If you accidentally commit the test ledger:
+   ```bash
+   git rm -r --cached test-ledger
+   git commit -m "Remove test-ledger from Git tracking"
+   git filter-branch --force --index-filter \
+     "git rm -rf --cached --ignore-unmatch test-ledger" \
+     --prune-empty --tag-name-filter cat -- --all
+   git reflog expire --expire=now --all
+   git gc --prune=now --aggressive
+   git push origin main --force
+   ```
+3. When cloning the repository on a new machine, you'll need to regenerate the test ledger locally.
+4. To regenerate the test ledger, run:
+   ```
+   solana-test-validator
+   ```
+   This will create a new test ledger in your project directory.
+
+Remember: Never commit or push the test-ledger folder to GitHub.
