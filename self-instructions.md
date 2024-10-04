@@ -37,3 +37,23 @@
    ```
 
 Remember to update the PROGRAM_ID in your .env files if it changes after deployment.
+
+## GitHub and Deployment
+
+1. Ensure all changes are committed locally using VS Code's Source Control view.
+2. Before pushing, check for large files:
+   - Avoid committing large files (>100MB) to the repository.
+   - Use .gitignore to exclude test ledgers, logs, and other large generated files.
+3. Push changes to GitHub using the sync button in VS Code or via terminal commands.
+4. If you accidentally push large files:
+   - Update .gitignore
+   - Remove files from Git history: `git rm -r --cached .`
+   - Commit changes: `git add . && git commit -m "Remove large files"`
+   - Force push: `git push origin main --force`
+5. To deploy on Vercel:
+   - Log in to Vercel (create an account if needed)
+   - Click "New Project"
+   - Import your GitHub repository
+   - Configure project settings if necessary
+   - Click "Deploy"
+6. After initial setup, pushing to GitHub will automatically trigger a new deployment on Vercel.
