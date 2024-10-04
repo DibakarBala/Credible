@@ -1,0 +1,5 @@
+[env]
+OUT_DIR = "./target/release/build"
+
+[build]
+target-dir = "D:/Solana/target"

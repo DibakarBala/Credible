@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=D:/Solana/target\debug\build\typenum-160b3ac811854313\out\consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=D:/Solana/target\debug\build\typenum-160b3ac811854313\out\op.rs

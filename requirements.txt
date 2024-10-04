@@ -1,0 +1,21 @@
+# Node.js dependencies (install using npm)
+express
+@solana/web3.js
+borsh
+cors
+dotenv
+axios
+
+# Rust dependencies (managed by Cargo)
+solana-program
+borsh
+
+# Development tools
+Rust (latest stable version)
+Cargo (comes with Rust)
+Node.js (v14 or later)
+npm (v6 or later)
+Solana CLI tools (latest version)
+
+# Optional
+PowerShell (for running airdrop.ps1 script)
