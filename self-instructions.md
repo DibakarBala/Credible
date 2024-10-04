@@ -58,29 +58,20 @@ Remember to update the PROGRAM_ID in your .env files if it changes after deploym
    - Click "Deploy"
 6. After initial setup, pushing to GitHub will automatically trigger a new deployment on Vercel.
 
-## Handling Large Files and Git History
+## Handling Large Files and Git History in PowerShell (Without WSL)
 
-If you encounter issues with large files in your Git history:
+If you're using PowerShell and don't have access to WSL or bash:
 
-1. Create a backup of your project.
-2. Run the following commands to remove large files from Git history:
-   ```bash
-   git filter-branch --force --index-filter \
-     "git rm -rf --cached --ignore-unmatch test-ledger" \
-     --prune-empty --tag-name-filter cat -- --all
+1. Run the following commands directly in PowerShell:
 
-   git for-each-ref --format='delete %(refname)' refs/original | git update-ref --stdin
-
+   ```powershell
+   git filter-branch --force --index-filter "git rm -rf --cached --ignore-unmatch test-ledger" --prune-empty --tag-name-filter cat -- --all
    git reflog expire --expire=now --all
-
-   git gc --prune=now
+   git gc --prune=now --aggressive
+   git push origin main --force
    ```
-3. Update .gitignore to exclude large files and directories.
-4. Commit the new .gitignore file.
-5. Force push to GitHub: `git push origin main --force`
-6. If issues persist, create a new repository and push to it.
 
-Remember to always check for large files before committing and pushing to avoid these issues in the future.
+This method ensures the git filter-branch command runs correctly in a PowerShell environment without needing WSL or bash.
 
 ## Managing Test Ledger
 
