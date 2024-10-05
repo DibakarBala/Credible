@@ -1,0 +1,62 @@
+{
+  "version": "0.1.0",
+  "name": "credible",
+  "instructions": [
+    {
+      "name": "issueCredential",
+      "accounts": [
+        {
+          "name": "credential",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "hashedData",
+          "type": "bytes"
+        },
+        {
+          "name": "zkProof",
+          "type": "bytes"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Credential",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "hashedData",
+            "type": "bytes"
+          },
+          {
+            "name": "zkProof",
+            "type": "bytes"
+          },
+          {
+            "name": "compressedData",
+            "type": "bytes"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+body {
+  background-color: #0f0e13;
+  color: #e0e0e0;
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  line-height: 1.6;
+}
+
+.landing-page header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+h1, h2, h3 {
+  color: #8a2be2;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5em;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.feature {
+  background-color: #1a1a2e;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  text-align: center;
+}
+
+.logo-placeholder {
+  background-color: #2a2a3a;
+  color: #8a2be2;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.how-it-works {
+  margin-bottom: 60px;
+}
+
+.how-it-works ol {
+  background-color: #1a1a2e;
+  padding: 30px 30px 30px 60px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.wallet-adapter-button-trigger {
+  background-color: #8a2be2 !important;
+  color: white !important;
+  padding: 12px 24px !important;
+  border-radius: 8px !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  transition: all 0.3s ease !important;
+}
+
+.wallet-adapter-button-trigger:hover {
+  background-color: #9b4deb !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4) !important;
+}
+
+@media (max-width: 768px) {
+  .landing-page header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wallet-adapter-button-trigger {
+    margin-top: 20px;
+  }
+}

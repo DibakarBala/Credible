@@ -1,0 +1,230 @@
+### Project Overview
+
+**Objective:**
+Build a decentralized employee ID verification system on Solana that ensures employee data privacy, secure hashing, blockchain storage, QR code verification, payment handling, and user-friendly wallet integration.
+
+**Technologies:**
+- **Reclaim Protocol:** For secure hashing of employee data.
+- **ZK Compression:** For efficient storage of hashed data on the Solana blockchain.
+- **Mercuryo:** For payment handling in both fiat and cryptocurrency.
+- **Okto:** For user-friendly wallet integration and social login.
+
+### Step-by-Step Project Build
+
+#### 1. **Setup Solana Development Environment**
+
+**Objective:**
+Set up the Solana development environment to build and deploy Solana programs.
+
+**Steps:**
+1. **Install Solana CLI:**
+   ```bash
+   sh -c "$(curl -sSfL https://release.solana.com/v1.9.2/install)"
+   ```
+2. **Install Rust:**
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   ```
+3. **Install Solana Program Library (SPL):**
+   ```bash
+   cargo install spl-token-cli
+   ```
+4. **Set Up Local Validator:**
+   ```bash
+   solana-test-validator
+   ```
+
+#### 2. **Integrate Reclaim Protocol for Data Hashing**
+
+**Objective:**
+Use Reclaim Protocol to securely hash employee data without exposing it to your system.
+
+**Steps:**
+1. **Install Reclaim SDK:**
+   ```bash
+   npm install reclaim-sdk
+   ```
+2. **Create Hashing Function:**
+   ```javascript
+   const { Reclaim } = require('reclaim-sdk');
+
+   async function hashEmployeeData(employeeData) {
+       const reclaim = new Reclaim();
+       const hashedData = await reclaim.hash(employeeData);
+       return hashedData;
+   }
+   ```
+3. **Generate Zero-Knowledge Proofs:**
+   ```javascript
+   async function generateProof(hashedData) {
+       const proof = await reclaim.generateProof(hashedData);
+       return proof;
+   }
+   ```
+
+#### 3. **Store Hashed Data on Solana Blockchain**
+
+**Objective:**
+Store the hashed employee data on the Solana blockchain using ZK Compression.
+
+**Steps:**
+1. **Create Solana Program:**
+   ```rust
+   use solana_program::{
+       account_info::AccountInfo, entrypoint, entrypoint::ProgramResult, msg, pubkey::Pubkey,
+   };
+
+   entrypoint!(process_instruction);
+
+   fn process_instruction(
+       program_id: &Pubkey,
+       accounts: &[AccountInfo],
+       instruction_data: &[u8],
+   ) -> ProgramResult {
+       msg!("Hello, world!");
+       Ok(())
+   }
+   ```
+2. **Integrate ZK Compression:**
+   ```rust
+   // Example placeholder for ZK Compression integration
+   fn compress_data(data: &[u8]) -> Vec<u8> {
+       // Implement ZK Compression logic here
+       data.to_vec()
+   }
+   ```
+3. **Store Compressed Data:**
+   ```rust
+   fn store_data(data: Vec<u8>) -> ProgramResult {
+       // Implement logic to store compressed data on Solana blockchain
+       Ok(())
+   }
+   ```
+
+#### 4. **Generate and Verify QR Code**
+
+**Objective:**
+Generate a QR code that contains the hashed data and allow users to scan the QR code to verify the employee's identity.
+
+**Steps:**
+1. **Generate QR Code:**
+   ```javascript
+   const QRCode = require('qrcode');
+
+   function generateQRCode(hashedData) {
+       return QRCode.toDataURL(hashedData);
+   }
+   ```
+2. **Verify QR Code:**
+   ```javascript
+   function verifyQRCode(scannedData, storedHash) {
+       return scannedData === storedHash;
+   }
+   ```
+
+#### 5. **Integrate Mercuryo for Payment Handling**
+
+**Objective:**
+Integrate Mercuryo's payment protocol to handle payments in both fiat and cryptocurrency.
+
+**Steps:**
+1. **Install Mercuryo Widget:**
+   ```html
+   <script src="https://widget.mercuryo.io/widget.js"></script>
+   ```
+2. **Initialize Mercuryo Widget:**
+   ```javascript
+   const mercuryoWidget = new MercuryoWidget({
+       widgetId: 'your-widget-id',
+       currency: 'USD',
+       amount: 100,
+       onSuccess: (transaction) => {
+           console.log('Payment successful:', transaction);
+       },
+       onError: (error) => {
+           console.error('Payment error:', error);
+       },
+   });
+   ```
+3. **Handle Payment:**
+   ```javascript
+   function handlePayment(paymentMethod, amount) {
+       mercuryoWidget.setAmount(amount);
+       mercuryoWidget.setCurrency(paymentMethod);
+       mercuryoWidget.open();
+   }
+   ```
+
+#### 6. **Integrate Okto for Wallet and Social Login**
+
+**Objective:**
+Integrate Okto's embedded wallet and social login features.
+
+**Steps:**
+1. **Install Okto SDK:**
+   ```bash
+   npm install okto-sdk
+   ```
+2. **Initialize Okto SDK:**
+   ```javascript
+   const { Okto } = require('okto-sdk');
+
+   const okto = new Okto({
+       clientId: 'your-client-id',
+       redirectUri: 'your-redirect-uri',
+   });
+   ```
+3. **Implement Social Login:**
+   ```javascript
+   function loginWithOkto() {
+       okto.loginWithSocial().then((user) => {
+           console.log('Logged in user:', user);
+       }).catch((error) => {
+           console.error('Login error:', error);
+       });
+   }
+   ```
+4. **Integrate Embedded Wallet:**
+   ```javascript
+   function openWallet() {
+       okto.openWallet().then((wallet) => {
+           console.log('Wallet opened:', wallet);
+       }).catch((error) => {
+           console.error('Wallet error:', error);
+       });
+   }
+   ```
+
+### Detailed Workflow
+
+1. **User Authentication:**
+   - **Social Login:** Users log in to your portal using Okto's social login feature.
+   - **Wallet Integration:** Users access their Okto embedded wallet within your application.
+
+2. **Employee Data Hashing:**
+   - The employer uses the Reclaim SDK to hash the employee data securely.
+   - The hashed data is generated without revealing the actual employee data.
+
+3. **Store Hashed Data on Solana Blockchain:**
+   - The hashed data is compressed using ZK Compression.
+   - The compressed hashed data is stored on the Solana blockchain.
+
+4. **Generate QR Code:**
+   - A QR code is generated that includes the hashed data.
+   - The QR code is provided to the employee for identity verification.
+
+5. **Verify Employee Identity:**
+   - A user scans the QR code using your application.
+   - The application retrieves the corresponding hash from the Solana blockchain.
+   - The scanned hash is compared with the stored hash to verify the employee's identity.
+
+6. **Payment Handling:**
+   - The employer accesses the payment gateway within your application.
+   - The employer selects the payment method (fiat or cryptocurrency).
+   - The employer completes the payment using Mercuryo's integrated payment widget.
+
+7. **Embedded Wallet Integration:**
+   - The user accesses the Okto embedded wallet within your application.
+   - The user manages assets, performs transactions, and interacts with dApps seamlessly.
+
+### Conclusion

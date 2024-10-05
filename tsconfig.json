@@ -12,6 +12,6 @@
       "*": ["node_modules/*", "src/types/*"]
     }
   },
-  "include": ["tests/**/*", "src/**/*"],
+  "include": ["tests/**/*", "src/**/*", "frontend/src/LandingPage.js"],
   "exclude": ["node_modules"]
 }

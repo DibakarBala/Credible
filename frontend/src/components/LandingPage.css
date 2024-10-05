@@ -1,0 +1,267 @@
+.landing-page {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  line-height: 1.6;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  background-color: #f8f9fa;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.built-with-solana {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #333;
+}
+
+.built-with-solana span {
+  margin: 0 0.5rem;
+}
+
+.solana-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #333;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 0;
+  background-color: #e9ecef;
+}
+
+.hero-content {
+  flex: 1;
+  padding: 0 2rem;
+}
+
+.hero-animation {
+  flex: 1;
+  max-width: 500px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #007bff;
+  border: 2px solid #007bff;
+}
+
+.problem-solution, .features, .user-journey, .about-founder, .use-cases, .why-now {
+  padding: 4rem 0;
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.user-journey-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.journey-animation {
+  flex: 1;
+  max-width: 500px;
+}
+
+.journey-steps {
+  flex: 1;
+  padding-left: 2rem;
+}
+
+.user-journey ol {
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.user-journey li {
+  margin-bottom: 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  background-color: #f8f9fa;
+  margin-top: 4rem;
+}
+
+.technologies {
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tech {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tech h3 {
+  color: #007bff;
+  margin-bottom: 0.5rem;
+}
+
+.data-visualization {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.data-item {
+  flex-basis: 30%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.data-counter {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.tech-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.solution-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.use-cases, .why-now {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.use-cases h2, .why-now h2 {
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.use-cases ul, .why-now ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.use-cases li, .why-now li {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.use-cases li:before, .why-now li:before {
+  content: '✓';
+  color: #28a745;
+  position: absolute;
+  left: 0;
+}
+
+@media (max-width: 768px) {
+  .hero, .user-journey-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content, .journey-steps {
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+
+  .hero-animation, .journey-animation {
+    max-width: 100%;
+  }
+
+  .data-item {
+    flex-basis: 100%;
+  }
+
+  .solution-text {
+    font-size: 1.2rem;
+  }
+}
