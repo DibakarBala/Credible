@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import signInAnimation from '../assets/sign-in-animation.json';
 import './SignIn.css';
@@ -6,11 +7,17 @@ import './SignIn.css';
 const SignIn = () => {
   const [email, setEmail] = useState('demo');
   const [password, setPassword] = useState('demo');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle sign in logic here
-    console.log('Sign in with:', email, password);
+    // For demo purposes, we'll just check if the credentials are 'demo'
+    if (email === 'demo' && password === 'demo') {
+      // Redirect to the dashboard
+      navigate('/dashboard');
+    } else {
+      alert('Invalid credentials. Please use demo/demo to sign in.');
+    }
   };
 
   return (
