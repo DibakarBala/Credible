@@ -1,31 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { Connection, PublicKey } from '@solana/web3.js';
+import React, { useState } from 'react';
+import { verifyCredential } from '../utils/solanaUtils';
 
 function VerifyEmployee() {
-  const { transactionId } = useParams();
-  const [verificationStatus, setVerificationStatus] = useState('Verifying...');
+  const [qrData, setQrData] = useState('');
+  const [verificationStatus, setVerificationStatus] = useState(null);
 
-  useEffect(() => {
-    verifyEmployee();
-  }, [transactionId]);
-
-  const verifyEmployee = async () => {
+  const handleVerify = async () => {
     try {
-      const connection = new Connection('http://localhost:8899', 'confirmed');
-      const transaction = await connection.getTransaction(transactionId);
-
-      if (transaction) {
-        // Check if the transaction contains the expected data
-        // This is a simplified check. You should implement a more robust verification
-        if (transaction.meta && transaction.meta.logMessages) {
-          setVerificationStatus('Valid Employee');
-        } else {
-          setVerificationStatus('Invalid Employee');
-        }
-      } else {
-        setVerificationStatus('Transaction not found');
-      }
+      const { hashedData } = JSON.parse(qrData);
+      const isValid = await verifyCredential(hashedData);
+      setVerificationStatus(isValid ? 'Valid Employee' : 'Invalid Employee');
     } catch (error) {
       console.error('Error verifying employee:', error);
       setVerificationStatus('Verification failed');
@@ -34,8 +18,14 @@ function VerifyEmployee() {
 
   return (
     <div className="verify-employee">
-      <h2>Employee Verification</h2>
-      <p>Status: {verificationStatus}</p>
+      <h2>Verify Employee Credential</h2>
+      <textarea
+        value={qrData}
+        onChange={(e) => setQrData(e.target.value)}
+        placeholder="Paste QR code data here"
+      />
+      <button onClick={handleVerify}>Verify</button>
+      {verificationStatus && <p>Status: {verificationStatus}</p>}
     </div>
   );
 }
