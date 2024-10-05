@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@project-serum/anchor": "^0.26.0",
     "@react-native-async-storage/async-storage": "^2.0.0",
     "@reclaimprotocol/reclaim-sdk": "^6.0.0",
     "@solana/wallet-adapter-base": "^0.9.23",
