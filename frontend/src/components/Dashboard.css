@@ -1,55 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 .dashboard {
-  max-width: 100%; /* Changed from 1200px to 100% */
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 1rem; /* Reduced padding for mobile */
-  box-sizing: border-box; /* Ensure padding is included in width calculation */
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 .dashboard h2 {
   color: #007bff;
-  margin-bottom: 1rem; /* Reduced margin for mobile */
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
 .dashboard-content {
   display: flex;
-  gap: 1rem; /* Reduced gap for mobile */
-  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: stretch;
 }
 
 /* Adjusted media query for mobile devices */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   .dashboard-content {
     flex-direction: column;
-    gap: 1rem;
+    align-items: center;
   }
 
   .verification-form, .verification-results, .transaction-results {
     width: 100%;
-    margin-bottom: 1rem;
-    min-height: auto; /* Allow height to adjust based on content */
-    padding: 1rem; /* Reduced padding for mobile */
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .dashboard {
+    padding: 20px;
+  }
+
+  .dashboard h2 {
+    font-size: 2rem;
+  }
+
+  .verification-form, .verification-results, .transaction-results {
+    padding: 1rem;
   }
 }
 
 .verification-form, .verification-results, .transaction-results {
-  flex: 1;
-  min-width: 0;
+  flex: 1 1 300px;
+  max-width: 400px;
   background-color: #f8f9fa;
-  padding: 1rem; /* Reduced padding */
+  padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  overflow: auto; /* Allow vertical scrolling if content overflows */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Ensures content is spaced evenly */
-  min-height: 400px; /* Set a minimum height for all containers */
+  justify-content: space-between;
+  min-height: 400px;
+  margin-bottom: 30px;
 }
 
 .transaction-results {
   text-align: center;
-  word-wrap: break-word; /* Ensures long words break to fit within the container */
-  overflow-wrap: break-word; /* Ensures long words break to fit within the container */
-  white-space: pre-wrap; /* Preserves whitespace and wraps text */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .qr-code-container, .transaction-results {
@@ -82,7 +108,7 @@
   cursor: pointer;
   font-weight: bold;
   margin-top: 1rem;
-  margin-bottom: 1rem; /* Add margin-bottom to create space below the button */
+  margin-bottom: 1rem;
 }
 
 .btn-primary:hover {

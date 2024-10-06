@@ -1,71 +1,193 @@
-.verification-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #e9ecef;
-  padding: 2rem;
-}
-
-.verification-container {
+.verify-container {
   max-width: 600px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
   text-align: center;
 }
 
-.verification-title {
-  color: #007bff;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  font-weight: bold;
-}
-
-.verification-message {
-  color: #28a745;
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  font-weight: bold;
-}
-
-.transaction-details {
-  background-color: #f8f9fa;
-  padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-}
-
-.transaction-id-label {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 0.5rem;
-}
-
-.transaction-id {
-  font-size: 1.2rem;
+h1 {
   color: #333;
-  word-wrap: break-word;
+  margin-bottom: 30px;
 }
 
-.verification-info {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 2rem;
+.input-group {
+  display: flex;
+  margin-bottom: 20px;
 }
 
-.explorer-link {
-  display: inline-block;
-  background-color: #007bff;
+input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
   color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
 }
 
-.explorer-link:hover {
-  background-color: #0056b3;
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.verification-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.verification-card.verified {
+  border: 2px solid #4caf50;
+}
+
+.verification-card.unverified {
+  border: 2px solid #ff9800;
+}
+
+.card-header {
+  padding: 20px;
+  color: white;
+}
+
+.verified .card-header {
+  background-color: #4caf50;
+}
+
+.unverified .card-header {
+  background-color: #ff9800;
+}
+
+.status-icon {
+  font-size: 36px;
+  margin-right: 10px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.unverified .status-icon {
+  background-color: #ff0000; /* Bright red background for the unverified icon */
+  color: white; /* White color for the exclamation mark */
+}
+
+h2 {
+  display: inline;
+  vertical-align: middle;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.professional-details, .warning-details {
+  text-align: left;
+}
+
+.detail-item {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.label {
+  font-weight: bold;
+  color: #555;
+  display: inline-block;
+  width: 120px;
+}
+
+.value {
+  color: #333;
+}
+
+.warning-message {
+  color: #d32f2f;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.caution-list {
+  padding-left: 20px;
+}
+
+.caution-list li {
+  color: #d32f2f;
+  margin-bottom: 10px;
+}
+
+.blockchain-verification {
+  background-color: #f0f8ff;
+  border-top: 1px solid #4CAF50;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.error {
+  color: #d32f2f;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .verify-container {
+    padding: 10px;
+  }
+
+  .verification-card {
+    margin-top: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .status-icon {
+    font-size: 24px;
+  }
+
+  .label {
+    width: 100px;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  input, button {
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  button {
+    margin-top: 10px;
+  }
+}
+
+.credible-footer {
+  background-color: #f5f5f5;
+  border-top: 1px solid #e0e0e0;
+  padding: 10px;
+  font-size: 14px;
+  font-style: italic;
+  color: #666;
 }
