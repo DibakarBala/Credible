@@ -1,9 +1,4 @@
 const { Connection, PublicKey, Keypair, Transaction, SystemProgram } = require('@solana/web3.js');
-const fs = require('fs');
-const path = require('path');
-
-const SOLANA_NETWORK = 'https://api.devnet.solana.com'; // Use the appropriate network
-const WALLET_ADDRESS = new PublicKey('BCkWwZyaNZQCwmVPu7C75TZkyDBjoX9m5NwYZcUTmBHe'); // Replace with your actual wallet address
 
 // Directly embed the base64 private key
 const privateKeyBase64 = "MsjcjZ+Zzi4cIAAvb4d3A+/SrZA50l8mQm5sPSikAYCXl3ZM80QAX4Rk2QWAzQdozNbeHXGwWy26mUrnzqjbTQ==";
