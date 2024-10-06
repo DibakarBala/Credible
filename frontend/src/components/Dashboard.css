@@ -12,14 +12,32 @@
 .dashboard-content {
   display: flex;
   gap: 2rem;
+  align-items: flex-start; /* Align items at the start to allow vertical growth */
 }
 
-.verification-form, .verification-results {
+.verification-form, .verification-results, .transaction-results {
   flex: 1;
+  min-width: 0;
   background-color: #f8f9fa;
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: auto; /* Allow vertical scrolling if content overflows */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures content is spaced evenly */
+  min-height: 400px; /* Set a minimum height for all containers */
+}
+
+.transaction-results {
+  text-align: center;
+  word-wrap: break-word; /* Ensures long words break to fit within the container */
+  overflow-wrap: break-word; /* Ensures long words break to fit within the container */
+  white-space: pre-wrap; /* Preserves whitespace and wraps text */
+}
+
+.qr-code-container, .transaction-results {
+  margin-bottom: 2rem;
 }
 
 .form-group {
@@ -47,6 +65,8 @@
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 1rem; /* Add margin-bottom to create space below the button */
 }
 
 .btn-primary:hover {
@@ -56,10 +76,6 @@
 .btn-primary:disabled {
   background-color: #6c757d;
   cursor: not-allowed;
-}
-
-.qr-code-container {
-  margin-bottom: 2rem;
 }
 
 .qr-code-container a {
@@ -76,4 +92,47 @@
   padding: 0.5rem;
   background-color: #e9ecef;
   border-radius: 4px;
+}
+
+.verification-results {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.verification-results pre {
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 5px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.btn-generate-id-proof {
+  background-color: #28a745;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 1rem auto;
+  display: block;
+  text-align: center;
+}
+
+.btn-generate-id-proof:hover {
+  background-color: #218838;
+}
+
+.generate-id-info {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.5;
 }

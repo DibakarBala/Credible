@@ -136,6 +136,50 @@ app.get('/verify-certificate/:id', async (req, res) => {
     }
 });
 
+const { ReclaimProofRequest } = require('@reclaimprotocol/js-sdk');
+
+const APP_ID = "0x336a0772E83d5a84F70779D4B5533766ca3C2D16";
+const APP_SECRET = "0x37b0bb8d34a1e73853b197f45969875a40e1c9c57bb34e9c8a6270cb4c11f05b";
+const GITHUB_PROVIDER_ID = "6d3f6753-7ee6-49ee-a545-62f1b1822ae5";
+
+app.post('/generate-request', async (req, res) => {
+    try {
+        const reclaimProofRequest = await ReclaimProofRequest.init(
+            APP_ID,
+            APP_SECRET,
+            GITHUB_PROVIDER_ID,
+            { log: true }
+        );
+        
+        const url = await reclaimProofRequest.getRequestUrl();
+        const sessionId = reclaimProofRequest.sessionId;
+
+        res.json({ url, sessionId });
+    } catch (error) {
+        console.error('Error generating request:', error);
+        res.status(500).json({ error: 'Failed to generate request' });
+    }
+});
+
+app.get('/check-status/:sessionId', async (req, res) => {
+    const { sessionId } = req.params;
+
+    try {
+        const reclaimProofRequest = await ReclaimProofRequest.init(
+            APP_ID,
+            APP_SECRET,
+            GITHUB_PROVIDER_ID,
+            { log: true }
+        );
+
+        const status = await reclaimProofRequest.getSessionStatus(sessionId);
+        res.json(status);
+    } catch (error) {
+        console.error('Error checking status:', error);
+        res.status(500).json({ error: 'Failed to check status' });
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
     console.log(`Using program ID: ${programId.toString()}`);

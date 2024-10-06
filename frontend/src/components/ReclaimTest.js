@@ -13,7 +13,12 @@ function ReclaimTest() {
       const GOOGLE_PROVIDER_ID = "f9f383fd-32d9-4c54-942f-5e9fda349762";
 
       try {
-        const reclaimProofRequest = await ReclaimProofRequest.init(APP_ID, APP_SECRET, GOOGLE_PROVIDER_ID);
+        const reclaimProofRequest = await ReclaimProofRequest.init(
+          APP_ID,
+          APP_SECRET,
+          GOOGLE_PROVIDER_ID,
+          { log: true }  // Add this line to enable logging
+        );
         
         const url = await reclaimProofRequest.getRequestUrl();
         setRequestUrl(url);

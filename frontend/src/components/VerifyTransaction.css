@@ -1,0 +1,71 @@
+.verification-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #e9ecef;
+  padding: 2rem;
+}
+
+.verification-container {
+  max-width: 600px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+}
+
+.verification-title {
+  color: #007bff;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.verification-message {
+  color: #28a745;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.transaction-details {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.transaction-id-label {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.transaction-id {
+  font-size: 1.2rem;
+  color: #333;
+  word-wrap: break-word;
+}
+
+.verification-info {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.explorer-link {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.explorer-link:hover {
+  background-color: #0056b3;
+}
