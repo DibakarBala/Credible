@@ -81,11 +81,14 @@ nav a {
 }
 
 .btn {
-  padding: 0.5rem 1rem;
+  padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
   display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .btn-primary {
@@ -94,9 +97,12 @@ nav a {
 }
 
 .btn-secondary {
-  background-color: transparent;
-  color: #007bff;
-  border: 2px solid #007bff;
+  background-color: #6c757d; /* A standard grey color */
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268; /* A slightly darker grey for hover effect */
 }
 
 .problem-solution, .features, .user-journey, .about-founder, .use-cases, .why-now {
@@ -153,15 +159,21 @@ footer {
 }
 
 .technologies {
-  padding: 4rem 0;
+  padding: 4rem 2rem; /* Added horizontal padding */
   background-color: #f8f9fa;
+}
+
+.technologies h2 {
+  text-align: center; /* Center-align the title */
+  margin-bottom: 2rem; /* Add some space below the title */
 }
 
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted minmax */
   gap: 2rem;
   margin-top: 2rem;
+  padding: 0 2rem; /* Added horizontal padding */
 }
 
 .tech {
@@ -263,5 +275,9 @@ footer {
 
   .solution-text {
     font-size: 1.2rem;
+  }
+
+  .tech-grid {
+    padding: 0 1rem; /* Reduced padding for smaller screens */
   }
 }

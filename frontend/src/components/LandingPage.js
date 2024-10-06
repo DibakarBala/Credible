@@ -76,7 +76,7 @@ const LandingPage = () => {
           <p>Instantly verify the legitimacy of professionals using blockchain-based ID verification</p>
           <div className="cta-buttons">
             <Link to="/signin" className="btn btn-primary">Get Started</Link>
-            <a href="#learn-more" className="btn btn-secondary">Learn More</a>
+            {/* Removed the Learn More button */}
           </div>
         </div>
         <div className="hero-animation">
