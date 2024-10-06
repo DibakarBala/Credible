@@ -1,25 +1,41 @@
 .dashboard {
-  max-width: 1200px;
+  max-width: 100%; /* Changed from 1200px to 100% */
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem; /* Reduced padding for mobile */
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
 }
 
 .dashboard h2 {
   color: #007bff;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem; /* Reduced margin for mobile */
 }
 
 .dashboard-content {
   display: flex;
-  gap: 2rem;
-  align-items: flex-start; /* Align items at the start to allow vertical growth */
+  gap: 1rem; /* Reduced gap for mobile */
+  align-items: flex-start;
+}
+
+/* Adjusted media query for mobile devices */
+@media screen and (max-width: 768px) {
+  .dashboard-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .verification-form, .verification-results, .transaction-results {
+    width: 100%;
+    margin-bottom: 1rem;
+    min-height: auto; /* Allow height to adjust based on content */
+    padding: 1rem; /* Reduced padding for mobile */
+  }
 }
 
 .verification-form, .verification-results, .transaction-results {
   flex: 1;
   min-width: 0;
   background-color: #f8f9fa;
-  padding: 2rem;
+  padding: 1rem; /* Reduced padding */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: auto; /* Allow vertical scrolling if content overflows */
@@ -135,4 +151,16 @@
   color: #333;
   font-family: 'Arial', sans-serif;
   line-height: 1.5;
+}
+
+/* Add this to ensure all content fits within the viewport width */
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure images and other media don't overflow */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
 }
