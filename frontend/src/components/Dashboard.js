@@ -200,7 +200,7 @@ const Dashboard = () => {
               <h3>Transaction Details</h3>
               <p>Transaction was successful!</p>
               <p>Transaction ID: {transactionId}</p>
-              <button onClick={() => window.open(`https://explorer.solana.com/tx/${transactionId}?cluster=devnet`, '_blank')} className="btn btn-primary">
+              <button onClick={() => window.open(`https://credible-hazel.vercel.app/verify/${transactionId}`, '_blank')} className="btn btn-primary">
                 View Proof of Transaction
               </button>
               <QRCode value={`https://credible-hazel.vercel.app/verify/${transactionId}`} size={200} />

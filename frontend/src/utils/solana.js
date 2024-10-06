@@ -40,6 +40,5 @@ async function saveIdentifierOnSolana(identifier) {
     console.error('Error saving identifier on Solana:', error);
     throw error;
   }
-}
+}module.exports = { saveIdentifierOnSolana };
 
-module.exports = { saveIdentifierOnSolana };

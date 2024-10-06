@@ -1,81 +1,90 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
 .dashboard {
-  max-width: 1400px;
+  max-width: 100%;
+  min-height: 100vh; /* Full viewport height */
   margin: 0 auto;
-  padding: 40px 20px;
-  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  font-family: 'Poppins', sans-serif;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
 }
 
 .dashboard h2 {
-  color: #007bff;
-  margin-bottom: 2rem;
-  text-align: center;
-  font-size: 2.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 3.5rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(45deg, #1e3c72, #2a5298);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.dashboard h2::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(45deg, #007bff, #00bcd4);
+  margin: 10px auto 0;
+  border-radius: 2px;
 }
 
 .dashboard-content {
   display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-  align-items: stretch;
-}
-
-/* Adjusted media query for mobile devices */
-@media screen and (max-width: 1200px) {
-  .dashboard-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .verification-form, .verification-results, .transaction-results {
-    width: 100%;
-    max-width: 600px;
-  }
+  gap: 2rem;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
 }
 
 @media screen and (max-width: 768px) {
   .dashboard {
-    padding: 20px;
+    padding: 1rem;
   }
 
   .dashboard h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .dashboard-content {
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
   .verification-form, .verification-results, .transaction-results {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    min-height: auto;
     padding: 1rem;
   }
 }
 
 .verification-form, .verification-results, .transaction-results {
-  flex: 1 1 300px;
-  max-width: 400px;
+  flex: 1;
+  min-width: 0;
   background-color: #f8f9fa;
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 400px;
-  margin-bottom: 30px;
 }
 
 .transaction-results {
   text-align: center;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: pre-wrap;
+  word-wrap: break-word; /* Ensures long words break to fit within the container */
+  overflow-wrap: break-word; /* Ensures long words break to fit within the container */
+  white-space: pre-wrap; /* Preserves whitespace and wraps text */
 }
 
 .qr-code-container, .transaction-results {
@@ -90,6 +99,8 @@
   display: block;
   margin-bottom: 0.5rem;
   font-weight: bold;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .form-group input {
@@ -97,6 +108,7 @@
   padding: 0.5rem;
   border: 1px solid #ced4da;
   border-radius: 4px;
+  font-size: 1rem;
 }
 
 .btn-primary {
@@ -108,7 +120,9 @@
   cursor: pointer;
   font-weight: bold;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem; /* Add margin-bottom to create space below the button */
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .btn-primary:hover {
@@ -165,6 +179,8 @@
   margin: 1rem auto;
   display: block;
   text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .btn-generate-id-proof:hover {
@@ -173,10 +189,10 @@
 
 .generate-id-info {
   margin-top: 0.5rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #333;
   font-family: 'Arial', sans-serif;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* Add this to ensure all content fits within the viewport width */
@@ -189,4 +205,11 @@
 img, video, iframe {
   max-width: 100%;
   height: auto;
+}
+
+/* Add these new styles at the end of the file */
+.verification-form h3, .verification-results h3, .transaction-results h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
