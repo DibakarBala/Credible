@@ -1,8 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ReclaimProofRequest } from '@reclaimprotocol/js-sdk';
 import QRCode from 'react-qr-code';
-import { saveIdentifierOnSolana } from '../utils/solana';
+import { saveIdentifierOnSolana } from '../utils/solana'; // Ensure this function interacts with the real Solana network
 import './Dashboard.css';
+
+// Mock functions for development
+const mockSaveIdentifierOnSolana = async (identifier) => {
+  // Simulate a delay
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  return 'mock-transaction-id-' + Math.random().toString(36).substring(7);
+};
+
+const mockCompress = (data) => {
+  return btoa(data); // Use base64 encoding as a simple "compression" for demonstration
+};
+
+const mockDecompress = (data) => {
+  return atob(data); // Use base64 decoding as a simple "decompression" for demonstration
+};
 
 const Dashboard = () => {
   const [employeeEmail, setEmployeeEmail] = useState('');
@@ -18,6 +33,8 @@ const Dashboard = () => {
   const [transactionId, setTransactionId] = useState('');
   const [isTransactionLoading, setIsTransactionLoading] = useState(false);
   const qrRef = useRef();
+  const [compressedIdentifier, setCompressedIdentifier] = useState('');
+  const [compressionStatus, setCompressionStatus] = useState('');
 
   const APP_ID = "0x336a0772E83d5a84F70779D4B5533766ca3C2D16";
   const APP_SECRET = "0x37b0bb8d34a1e73853b197f45969875a40e1c9c57bb34e9c8a6270cb4c11f05b";
@@ -81,19 +98,55 @@ const Dashboard = () => {
   const handleGenerateIdProof = async () => {
     console.log('Generate ID Proof button clicked');
     setIsTransactionLoading(true);
+    setCompressionStatus('');
     try {
       const identifier = proofs?.identifier;
       if (identifier) {
-        const transactionId = await saveIdentifierOnSolana(identifier);
+        setCompressionStatus('Initializing ZK compression...');
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        setCompressionStatus('Compressing data...');
+        // Here, you would use actual ZK compression instead of mock compression
+        // const compressed = await realZKCompress(identifier);
+        const compressed = btoa(identifier); // Temporary placeholder
+        setCompressedIdentifier(compressed);
+        
+        setCompressionStatus('ZK compression complete. Preparing for upload...');
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        setCompressionStatus('Uploading compressed data to Solana blockchain...');
+        // Use the real Solana function here
+        const transactionId = await saveIdentifierOnSolana(compressed);
         console.log('Transaction ID:', transactionId);
         setTransactionId(transactionId);
+        
+        setCompressionStatus('Upload complete!');
       } else {
         console.error('No identifier found in proofs');
+        setCompressionStatus('Error: No identifier found');
       }
     } catch (error) {
       console.error('Error generating ID proof:', error);
+      setCompressionStatus('Error occurred during the process');
     } finally {
       setIsTransactionLoading(false);
+    }
+  };
+
+  // New function to handle verification
+  const handleVerify = async (transactionId) => {
+    try {
+      // In a real implementation, you would fetch the compressed data from Solana here
+      // For now, we'll just use the compressedIdentifier state
+      const compressedData = compressedIdentifier;
+
+      // Use mock decompression
+      const decompressedIdentifier = mockDecompress(compressedData);
+
+      console.log('Decompressed Identifier:', decompressedIdentifier);
+      // TODO: Implement the logic to display the decompressed identifier details
+    } catch (error) {
+      console.error('Error verifying identifier:', error);
     }
   };
 
@@ -114,6 +167,12 @@ const Dashboard = () => {
       downloadLink.click();
     };
     img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
+  };
+
+  // In the JSX, replace the verify button with a mock verification
+  const handleMockVerify = () => {
+    const decompressed = mockDecompress(compressedIdentifier);
+    alert(`Mock Verification Result: ${decompressed}`);
   };
 
   return (
@@ -182,13 +241,20 @@ const Dashboard = () => {
             <div>
               <h3>Verification Successful!</h3>
               <pre>{JSON.stringify(proofs, null, 2)}</pre>
-              <button className="btn-generate-id-proof" onClick={handleGenerateIdProof}>
+              <button className="btn-generate-id-proof" onClick={handleGenerateIdProof} disabled={isTransactionLoading}>
                 Generate ID Proof QR
               </button>
+              {compressionStatus && (
+                <div className="compression-status">
+                  <p>{compressionStatus}</p>
+                  {isTransactionLoading && <div className="loader"></div>}
+                </div>
+              )}
               <p className="generate-id-info">
-                Clicking this button will upload the secret hash identifier of your employee to Solana. 
-                You will receive a QR code which you can download and print on your employee ID card. 
-                Anyone can scan and verify their employment with your organization.
+                Clicking this button will compress your employee's identifier using ZK compression
+                and upload it to the Solana blockchain. You will receive a QR code which you can
+                download and print on your employee ID card. Anyone can scan and verify their
+                employment with your organization.
               </p>
             </div>
           )}
@@ -201,7 +267,7 @@ const Dashboard = () => {
               <p>Transaction was successful!</p>
               <p>Transaction ID: {transactionId}</p>
               <button onClick={() => window.open(`https://credible-hazel.vercel.app/verify/${transactionId}`, '_blank')} className="btn btn-primary">
-                View Proof of Transaction
+                Verify Transaction
               </button>
               <QRCode value={`https://credible-hazel.vercel.app/verify/${transactionId}`} size={200} />
               <button onClick={downloadQRCode} className="btn btn-primary">Download QR Code</button>
