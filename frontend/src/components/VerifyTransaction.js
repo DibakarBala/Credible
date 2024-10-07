@@ -33,14 +33,13 @@ function VerifyTransaction() {
         setError('Professional not found or invalid QR code');
         setVerified(false);
       } else {
-        // Here you would decode the transaction data to get professional details
-        // This is a placeholder. Replace with actual data extraction logic
+        // Update the decodedData with your own information
         const decodedData = {
-          name: "John Doe",
-          designation: "Software Engineer",
-          organization: "Solana Inc.",
-          idNumber: "SOL123456",
-          issuedDate: new Date().toLocaleDateString(),
+          name: "Dibakar Bala",
+          designation: "Quant Finance Researcher",
+          organization: "WorldQuant LLC",
+          idNumber: "DB8989",
+          issuedDate: "10/7/2016"
         };
         setProfessionalData(decodedData);
         setVerified(true);

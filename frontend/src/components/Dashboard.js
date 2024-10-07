@@ -20,10 +20,12 @@ const mockDecompress = (data) => {
 };
 
 const Dashboard = () => {
-  const [employeeEmail, setEmployeeEmail] = useState('');
-  const [employeeName, setEmployeeName] = useState('');
-  const [joiningDate, setJoiningDate] = useState('');
-  const [idCardNumber, setIdCardNumber] = useState('');
+  const [name, setName] = useState('');
+  const [designation, setDesignation] = useState('');
+  const [organization, setOrganization] = useState('');
+  const [idNumber, setIdNumber] = useState('');
+  const [issuedDate, setIssuedDate] = useState('');
+  const [email, setEmail] = useState(''); // New state for Email ID
   const [reclaimProofRequest, setReclaimProofRequest] = useState(null);
   const [requestUrl, setRequestUrl] = useState('');
   const [statusUrl, setStatusUrl] = useState('');
@@ -183,42 +185,62 @@ const Dashboard = () => {
           <h3>Generate Employee Verification Request</h3>
           <form onSubmit={handleCreateClaim}>
             <div className="form-group">
-              <label htmlFor="employeeName">Employee Name:</label>
+              <label htmlFor="name">Name:</label>
               <input
                 type="text"
-                id="employeeName"
-                value={employeeName}
-                onChange={(e) => setEmployeeName(e.target.value)}
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 required
               />
             </div>
             <div className="form-group">
-              <label htmlFor="employeeEmail">Employee Email:</label>
+              <label htmlFor="designation">Designation:</label>
               <input
-                type="email"
-                id="employeeEmail"
-                value={employeeEmail}
-                onChange={(e) => setEmployeeEmail(e.target.value)}
+                type="text"
+                id="designation"
+                value={designation}
+                onChange={(e) => setDesignation(e.target.value)}
                 required
               />
             </div>
             <div className="form-group">
-              <label htmlFor="joiningDate">Joining Date:</label>
+              <label htmlFor="organization">Organization:</label>
+              <input
+                type="text"
+                id="organization"
+                value={organization}
+                onChange={(e) => setOrganization(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="idNumber">ID Number:</label>
+              <input
+                type="text"
+                id="idNumber"
+                value={idNumber}
+                onChange={(e) => setIdNumber(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="issuedDate">Issued Date:</label>
               <input
                 type="date"
-                id="joiningDate"
-                value={joiningDate}
-                onChange={(e) => setJoiningDate(e.target.value)}
+                id="issuedDate"
+                value={issuedDate}
+                onChange={(e) => setIssuedDate(e.target.value)}
                 required
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="idCardNumber">ID Card Number:</label>
+            <div className="form-group"> {/* New Email ID field */}
+              <label htmlFor="email">Email ID:</label>
               <input
-                type="text"
-                id="idCardNumber"
-                value={idCardNumber}
-                onChange={(e) => setIdCardNumber(e.target.value)}
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
