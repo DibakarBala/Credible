@@ -211,7 +211,7 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <h2>Employer Dashboard</h2>
-      <a href="/employee-verification" className="employee-verification-link">
+      <a href="/employee-verification" className="employee-verification-link" target="_blank" rel="noopener noreferrer">
         Check Employee Verification Status
       </a>
       <div className="dashboard-content">
