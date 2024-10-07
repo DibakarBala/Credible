@@ -4,6 +4,7 @@ import HomePage from './components/LandingPage'; // Import your homepage compone
 import SignInPage from './components/SignIn'; // Import your sign-in page component
 import Dashboard from './components/Dashboard';
 import VerifyTransaction from './components/VerifyTransaction';
+import EmployeeVerificationDashboard from './components/EmployeeVerificationDashboard';
 
 const App = () => (
   <Router>
@@ -12,6 +13,7 @@ const App = () => (
       <Route path="/signin" element={<SignInPage />} /> {/* Route for the sign-in page */}
       <Route path="/dashboard" element={<Dashboard />} /> {/* Route for the dashboard */}
       <Route path="/verify/:transactionId" element={<VerifyTransaction />} /> {/* Route for transaction verification */}
+      <Route path="/employee-verification" element={<EmployeeVerificationDashboard />} /> {/* Route for employee verification dashboard */}
     </Routes>
   </Router>
 );

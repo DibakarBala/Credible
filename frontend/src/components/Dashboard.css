@@ -236,3 +236,102 @@ img, video, iframe {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.employee-verification-link {
+    display: inline-block;
+    margin: 20px 0; /* Add margin for spacing */
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #1e90ff, #00bfff);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px; /* Rounded edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.employee-verification-link:hover {
+    background: linear-gradient(45deg, #00bfff, #1e90ff);
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.bulk-upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.file-input {
+    display: none; /* Hide the default file input */
+}
+
+.upload-button {
+    background: linear-gradient(45deg, #ff7f50, #ff6347);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-left: 10px;
+}
+
+.upload-button:hover {
+    background: linear-gradient(45deg, #ff6347, #ff7f50);
+    transform: translateY(-2px);
+}
+
+.upload-button:focus {
+    outline: none;
+}
+
+.bulk-upload label {
+    background: linear-gradient(45deg, #ff7f50, #ff6347);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.bulk-upload label:hover {
+    background: linear-gradient(45deg, #ff6347, #ff7f50);
+    transform: translateY(-2px);
+}
+
+.verification-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.verification-table td, .verification-table th {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center; /* Center-align text */
+    font-size: 1rem;
+}
+
+.verification-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+.verification-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.verification-table tr:hover {
+    background-color: #ddd;
+}

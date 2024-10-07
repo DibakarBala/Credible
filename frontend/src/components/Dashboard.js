@@ -177,11 +177,51 @@ const Dashboard = () => {
     alert(`Mock Verification Result: ${decompressed}`);
   };
 
+  const renderVerificationData = (proofs) => {
+    if (!proofs) return null;
+
+    const { claimData } = proofs;
+    const { provider, parameters } = claimData;
+    const parsedParameters = JSON.parse(parameters);
+    const username = parsedParameters.paramValues.username;
+
+    // Map provider to a user-friendly name
+    const providerName = provider === 'http' ? 'GitHub' : provider;
+
+    return (
+      <table className="verification-table">
+        <tbody>
+          <tr>
+            <td>Provider</td>
+            <td>{providerName}</td>
+          </tr>
+          <tr>
+            <td>Username</td>
+            <td>{username}</td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td>Verified</td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  };
+
   return (
     <div className="dashboard">
       <h2>Employer Dashboard</h2>
+      <a href="/employee-verification" className="employee-verification-link">
+        Check Employee Verification Status
+      </a>
       <div className="dashboard-content">
         <div className="verification-form">
+          <div className="bulk-upload">
+            <input type="file" id="fileInput" className="file-input" />
+            <button className="upload-button" onClick={() => alert('This is a dummy upload button.')}>
+              Upload Employee Data in Bulk
+            </button>
+          </div>
           <h3>Generate Employee Verification Request</h3>
           <form onSubmit={handleCreateClaim}>
             <div className="form-group">
@@ -262,7 +302,7 @@ const Dashboard = () => {
           {proofs && (
             <div>
               <h3>Verification Successful!</h3>
-              <pre>{JSON.stringify(proofs, null, 2)}</pre>
+              {renderVerificationData(proofs)}
               <button className="btn-generate-id-proof" onClick={handleGenerateIdProof} disabled={isTransactionLoading}>
                 Generate ID Proof QR
               </button>
